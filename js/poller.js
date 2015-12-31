@@ -286,6 +286,7 @@
 	    {
 	    	if( options.showresultsUrl)
 	    	{
+                var results = null;
                 var r=null;
                 if($('#'+elemntId).html().indexOf('pollerRes')==-1)
                 {
@@ -306,31 +307,9 @@
 		                contentType: "application/json; charset=utf-8",
 		                dataType: "json",
 			            success: function(res) {
-                            var results = eval(res.d);
+                            results = eval(res.d);
                                 //hide loader
                             $('#loader').hide();
-                            for(var i=0;i<results.length;i++)
-                            {
-                                var resultText = results[i].toString();
-                                if(resultText.indexOf('{fa-')>-1)
-                                {
-                                    var fa = resultText.split('{')[1].split('}')[0];
-                                    resultText = resultText.replace('{'+fa+'}','<i class="fa '+fa+'"></i>');
-                                }
-                                if(resultText.indexOf('{glyphicon-')>-1)
-                                {
-                                    var gl = resultText.split('{')[1].split('}')[0];
-                                    resultText = resultText.replace('{'+gl+'}','<span class="glyphicon  '+gl+'"></span');
-                                }
-                                r.append('<div class="question" style="cursor:default">'+resultText+'</div>');
-                            }
-                            if(options.showBackBtn)
-                            {
-                                r.append('<div class="btnContainer" style="text-align:'+options.backBtnAlign+'"><button id="btnBack" class=pollerButtons>'+options.backBtnText+'</button><div>');
-                                $('#btnBack').click(function(){
-	    			                showPoll(p);
-	    		                });
-                            }
 			            },
 			            error: function(){
                             //hide loader
@@ -359,7 +338,7 @@
                     r.show();//there is a pollerRes
                 }
              try{
-                    var results = options.showResultsMethod();
+                    results = options.showResultsMethod();
                     if(options.resultGraph)
                     {
                         for(var i=0;i<results.length;i++)
