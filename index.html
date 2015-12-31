@@ -13,26 +13,31 @@
 		$('#poll').poller(
 			{
 				question:'How are you today? {fa-hand-o-right}',
-				//radio:true,
+				answersMethod:getOptions,
+				radio:true,
 				showResults:true,
 				showResultsMethod:showresults,
 				showResultsBtn:true,
 				showBackBtn:true,
-				//alertAfterSave:true,
+				alertAfterSave:true,
 				saveMethod:saveres,
 				resultGraph:true,
 			});
 	});
  	function showresults()
  	{
- 		//var r = [['1 - 4'],['1 - 4'],['1 - 4'],['1 - 4 {fa-cog}']];
- 		var r = [['40'],['17'],['74 {glyphicon-user}'],['56 {fa-cog}']];
+ 		var r = [['40'],['17'],['74 {glyphicon-triangle-top}'],['56']];
  		return r;
  	}
  	function saveres()
  	{
  		var r=true
  		return r;
+ 	}
+ 	function getOptions()
+ 	{
+ 		var o = [['Great!'],['Neutral'],['okay...'],['dont ask']];
+ 		return o;
  	}
 </script>
 </head>
