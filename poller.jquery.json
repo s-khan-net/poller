@@ -1,0 +1,35 @@
+{
+  "name": "poller",
+  "title": "jQuery Poller",
+  "description": "A jQuery plugin for creating a poll",
+  "keywords": [
+    "jquery-plugins",
+    "Poll",
+    "Vote",
+    "Poller",
+  ],
+  "version": "1.0.1",
+  "author": {
+    "name": "Saud Khan",
+    "url": "http://www.saudkhan.net"
+  },
+  "maintainers": [
+    {
+      "name": "Saud Khan",
+      "url": "https://github.com/s-khan-net"
+    }
+  ],
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://www.opensource.org/licenses/mit-license.php"
+    }
+  ],
+  "bugs": "https://github.com/s-khan-net/poller/issues",
+  "homepage": "http://s-khan-net.github.io/poller.",
+  "docs": "https://github.com/s-khan-net/poller/new/master?readme=1",
+  "download": "",
+  "dependencies": {
+    "jquery": ">=1.4"
+  }
+}

@@ -1,0 +1,44 @@
+<html>
+<head>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script src="js/poller.js"></script>
+
+<link rel="stylesheet" type="text/css" href="css/poller.css">
+<link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<title>Poller</title>
+<script type="text/javascript">
+ 	$(document).ready(function(){
+		$('#poll').poller(
+			{
+				question:'How are you today? {fa-hand-o-right}',
+				//radio:true,
+				showResults:true,
+				showResultsMethod:showresults,
+				showResultsBtn:true,
+				showBackBtn:true,
+				//alertAfterSave:true,
+				saveMethod:saveres,
+				resultGraph:true,
+			});
+	});
+ 	function showresults()
+ 	{
+ 		//var r = [['1 - 4'],['1 - 4'],['1 - 4'],['1 - 4 {fa-cog}']];
+ 		var r = [['40'],['17'],['74 {glyphicon-user}'],['56 {fa-cog}']];
+ 		return r;
+ 	}
+ 	function saveres()
+ 	{
+ 		var r=true
+ 		return r;
+ 	}
+</script>
+</head>
+<body>
+<div class="container">
+	<div class="jumbotron">	Poller - jquery plugin</div>
+	<div class="well"><div id="poll"></div></div>
+</div>
+</body>

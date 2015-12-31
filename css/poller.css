@@ -1,0 +1,73 @@
+
+.poller
+{
+	padding: 3px;
+	width:220px;
+}
+.pollerRes
+{
+	padding: 3px;
+	width:220px;
+}
+.question
+{
+	background-color:#fff;
+	cursor:default;
+	padding-top:5px;
+	border-radius:4px;
+	border:1px solid #CCC;
+	white-space: normal;
+	padding:6px;
+}
+.question:hover
+{
+	background-color:#FAFAFA;
+}
+.answer
+{
+	background-color:#fff;
+	padding-top:5px;
+	cursor:default;
+	border-radius:4px;
+	border:1px solid #CCC;
+	white-space: normal;
+	padding:2px;
+}
+.answer:hover
+{
+	background-color:#FAFAFA;
+}
+.btnContainer
+{
+	padding:8px;
+}
+.load
+{
+	position:relative;
+	height:45px;
+	background-color:#CCC;
+	text-align:center;
+	display:none;
+	z-index:9999;
+	opacity:.8;
+	padding-top:10px;
+	border-radius:4px;
+}
+.exceptionMsg{
+	color:Red;
+	font-size:small;
+}
+.pollerButtons {
+	height:28px;
+	cursor:default;
+}
+.pollerGraph { 
+        margin:0px;
+        padding: 2px; 
+}
+.pollerGraph .bar { 
+    text-align: center; 
+    color: #000; 
+    
+}
+/*.pollerGraph .bar span { position: absolute; left: 1em; }*/
