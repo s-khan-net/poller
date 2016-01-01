@@ -12,7 +12,7 @@
  	$(document).ready(function(){
 		$('#poll').poller(
 			{
-				question:'How are you today? {fa-hand-o-right}',
+				question:'How are you today?',
 				answersMethod:getOptions,
 				radio:true,
 				showResults:true,
@@ -43,7 +43,234 @@
 </head>
 <body>
 <div class="container">
-	<div class="jumbotron">	Poller - jquery plugin</div>
-	<div class="well"><div id="poll"></div></div>
+	<div class="jumbotron">	<h1>Poller </h1> feature rich jquery plugin to create polls</div>
+	<div class="panel">
+		<p>&nbsp;&nbsp;&nbsp;poller is a simple feature rich jquery plugin that creates all the elements.</p>
+		<p>The plugin uses json arrays to show the poll data. Server methods can be calles as well to save or retrieve data</p>
+	</div>
+	<div class="well" ><h3>A simple example using the most basic options:</h3><br><div id="poll" ></div><br><br>
+	code for the above poll:<br>
+	<pre>
+	&lt;script&gt;
+	$(document).ready(function(){
+		$('#poll').poller(
+			{
+				question:'How are you today?',
+				answersMethod:getOptions,
+				radio:true,
+				showResults:true,
+				showResultsMethod:showresults,
+				showResultsBtn:true,
+				showBackBtn:true,
+				alertAfterSave:true,
+				saveMethod:saveres,
+				resultGraph:true, 
+			});
+	});
+	function showresults()
+ 	{
+ 		var r = [['40'],['17'],['74 {glyphicon-triangle-top}'],['56']]; 
+ 		return r;
+ 	}
+ 	function saveres()
+ 	{
+ 		var r=true
+ 		return r;
+ 	}
+ 	function getOptions()
+ 	{
+ 		var o = [['Great!'],['Neutral'],['okay...'],['dont ask']];
+ 		return o;
+ 	}
+ 	&lt;/script&gt;
+ 	&lt;body&gt;
+ 	&lt;div id="poll">&lt;/div&gt;
+ 	&lt;/body&gt;
+	</pre>
+	</div>
+	<div class="panel">
+		<h2>Options</h2><a name="polleroptions"></a>
+		<table class="table table-bordered">
+		<thead>
+			<tr>
+			<th>Name</th>
+			<th>Type</th>
+			<th>Description</th>
+			<th>Defaults</th>
+			<th>Should return</th>
+			</thead>
+    		<tbody>
+			<tr>
+			<td>question</td>
+			<td><code class="text-primary">string</code></td>
+			<td>The main question for the poll</td>
+			<td><code>'Poller?'</code></td>
+			<td></td>
+			</tr>
+			<tr>
+			<td>answersUrl</td>
+			<td><code class="text-primary">string</code></td>
+			<td>Server url to retrive the options for the poll. This option should return a <code>json array</code>. <br>If this is not present then the plugin looks for the answersMethod option (see next), if both are not present then the default options are displayed.<br>default option: <br>
+			<pre class="text-primary">[['Option1'],['Option2'],['Option3'],['Option4']]</pre>
+			</td>
+			<td><code class="text-primary">null</code></td>
+			<td><code class="text-primary">json array</code></td>
+			</tr>
+			<tr>
+			<td>answersMethod</td>
+			<td><code class="text-primary">function</code></td>
+			<td>Javascript method name that return the options for the poll. This option should return a <code>json array</code>.<br> If this is not present then the plugin looks for the answersUrl option (see previous), if both are not present then the default options are displayed.<br>default option: <br>
+			<pre class="text-primary">[['Option1'],['Option2'],['Option3'],['Option4']]</pre></td>
+			<td><code class="text-primary">null</code></td>
+			<td><code class="text-primary">json array</code></td>
+			</tr>
+			<tr>
+			<td>radio</td>
+			<td><code class="text-primary">boolean</code></td>
+			<td>If option need to be displayed as a radio button</td>
+			<td><code class="text-primary">false</code></td>
+			<td></td>
+			</tr>
+			<tr>
+			<td>showResults</td>
+			<td><code class="text-primary">boolean</code></td>
+			<td>Whether to show the results after an option is selected</td>
+			<td><code class="text-primary">false</code></td>
+			<td></td>
+			</tr>	
+			<tr>
+			<td>showResultsBtn</td>
+			<td><code class="text-primary">boolean</code></td>
+			<td>Whether to display a button to show the results</td>
+			<td><code class="text-primary">false</code></td>
+			<td></td>
+			</tr>		
+			<tr>
+			<td>resultBtnAlign</td>
+			<td><code class="text-primary">string</code></td>
+			<td>Alignment of the button that shows the results - <code>'left'|'center'|'right'</code></td>
+			<td><code>'centre'</code></td>
+			<td></td>
+			</tr>	
+			<tr>
+			<td>resultBtnText</td>
+			<td><code class="text-primary">string</code></td>
+			<td>Text for the 'show results' button</td>
+			<td><code>'View Results'</code></td>
+			<td></td>
+			</tr>
+			<tr>
+			<td>saveUrl</td>
+			<td><code class="text-primary">string</code></td>
+			<td>Server url to save the results of the poll. This option should return a bool - <code>true|false</code> <br>If this option is not present, then the plugin will look for saveMethod (see next). If both are not present then an message is shown that says no save method was found to save the results after an option is selected</td>
+			<td><code class="text-primary">null</code></td>
+			<td><code class="text-primary">boolean</code></td>
+			</tr>
+			<tr>
+			<td>saveMethod</td>
+			<td><code class="text-primary">function</code></td>
+			<td>Javascript method name that save the results of the poll. This option should return a bool - <code>true|false</code> <br>If this option is not present, then the plugin will look for saveUrl (see previous). If both are not present then an message is shown that says no save method was found to save the results after an option is selected</td>
+			<td><code class="text-primary">null</code></td>
+			<td><code class="text-primary">boolean</code></td>
+			</tr>
+			<tr>
+			<td>resultGraph</td>
+			<td><code class="text-primary">boolean</code></td>
+			<td>Whether the results are shown as a graph or text<br>For the results to shown as a graph, the results must <b>start with a number</b> that denotes a percentage of poll results and this option should be set to true.<br>example: The result array <code>[['40'],['17 lowest'],['74 this is high'],['56']];</code>will show up as <br>
+			<div class="pollerRes">
+			<div class="pollerGraph"><div class="bar" style="width: 40%;background: #CCC;text-align:center;">40</div></div>
+			<div class="pollerGraph"><div class="bar" style="width: 17%;background: #CCC;text-align:center;">17</div></div>
+			<div class="pollerGraph"><div class="bar" style="width: 74%;background: #CCC;text-align:center;">74 this is high</div></div>
+			<div class="pollerGraph"><div class="bar" style="width: 56%;background: #CCC;text-align:center;">56</div></div>
+			</td>
+			<td><code class="text-primary">false</code></td>
+			<td></td>
+			</tr>
+			<tr>
+			<td>showresultsUrl</td>
+			<td><code class="text-primary">string</code></td>
+			<td>Server url to  retrive the results of the poll.  This option should return a <code>json array</code>. <br>If this option is not present, then the plugin will look for showResultsMethod (see next). If both are not present then an message is shown that says no save method was found to display the results after an option is selected - (provided <code>showResults</code> is set to true)</td>
+			<td><code class="text-primary">null</code></td>
+			<td><code class="text-primary">json array</code></td>
+			</tr>
+			<tr>
+			<td>showResultsMethod</td>
+			<td><code class="text-primary">function</code></td>
+			<td>Javascript method name to  retrive the results of the poll.  This option should return a <code>json array</code>. <br>If this option is not present, then the plugin will look for showresultsUrl (see previous). If both are not present then an message is shown that says no save method was found to display the results after an option is selected - (provided <code>showResults</code> is set to true)</td>
+			<td><code class="text-primary">null</code></td>
+			<td><code class="text-primary">json array</code></td>
+			</tr>
+			<tr>
+			<td>showBackBtn</td>
+			<td><code class="text-primary">boolean</code></td>
+			<td>Whether to display a back button below the results.</td>
+			<td><code class="text-primary">false</code></td>
+			<td></td>
+			</tr>
+			<tr>
+			<td>backBtnAlign</td>
+			<td><code class="text-primary">string</code></td>
+			<td>Alignment of the back button - <code>'left'|'center'|'right'</code></td>
+			<td><code>'centre'</code></td>
+			<td></td>
+			</tr>
+			<tr>
+			<td>backBtnText</td>
+			<td><code class="text-primary">string</code></td>
+			<td>Text for the back button</td>
+			<td><code>'Back'</code></td>
+			<td></td>
+			</tr>
+			<tr>
+			<td>alertAfterSave</td>
+			<td><code class="text-primary">boolean</code></td>
+			<td>Whether to show an alert after an option is clicked.</td>
+			<td><code class="text-primary">false</code></td>
+			<td></td>
+			</tr>
+			<tr>
+			<td>alertAfterSaveMsg</td>
+			<td><code class="text-primary">string</code></td>
+			<td>The message that is shown after an option is clicked. The message can be customized - see the alert message customizations.</td>
+			<td><code>'Your selected option {answer_no}'</code></td>
+			<td></td>
+			</tr>
+			<tr>
+			<td>&nbsp;</td>
+			<td></td>
+			<td></td>
+			<td></td>
+			</tr>
+			</tbody>
+		</table>
+	</div>
+	<div class="panel">
+		<h2>Features</h2>
+		<div class="panel">
+			<h4><i class="fa fa-cog"></i> Alert message customization</h4><a name="alertmsg"></a>
+			<p>The alert message shown after an option is clicked, can be modified to have any text by using the <code class="text-primary">alertAfterSaveMsg</code> </p>
+			<p>If you want to have 'an answer was clicked' as the message that shows up after an option is selected, then simply assign this text to the option like : <code>alertAfterSaveMsg:'an answer was clicked'</code></p>
+			<p>This message can include the number of the option selected, or the text of the option selected by including <code>{answer_no}</code> and/or <code>{answer_text}</code> in the message</p>
+			<p>Example: if you wanted the message to say <b>'you chose Neutral'</b>, you would have to set<br>
+			<code>alertAfterSaveMsg:'You chose {answer_text}'</code></p>
+			<p>Provided that the option <code>alertAfterSave:true</code></p>
+			<br>
+			<h4><i class="fa fa-cog"></i> Uses font awesome</h4>
+			<p>All the text displayed by the plugin, can contain fonts by <a href=https://fortawesome.github.io/Font-Awesome/ target="_blank">font awesome</a>.</p>
+			<p>Every field - the question, the option and the results can include 'font awesome' fonts.</p>
+			<p>To include any font, simply include the fa class name in flower braces like <code>{fa-cog}</code></p>
+			<p>Example: if you want to incode the class {fa-hand-o-right} - <i class="fa fa-hand-o-right"></i> , simply include {fa-hand-o-right} within the text to be displayed.
+			If you wanted the question for the poll to be <br><b>'How are you today? <i class="fa fa-hand-o-right"></i> '</b>
+			then, the question option would be <code>question:'How are you today? {fa-hand-o-right}'</code>.
+			</p>
+			<br>
+			<h4><i class="fa fa-cog"></i> Uses glyphicon</h4>
+			<p>Similar to font awsome, you can also use the bootstrap componenet, <a href="http://getbootstrap.com/components/#glyphicons" target="_blank">Glyphicons</a>. Just like fonts by font awesome is included into the text, glyphicons can be included in the same way.</p>
+			<p>If you wanted the question for the poll to be <br><b>'How are you today? <i class="glyphicon glyphicon-ok"></i> '</b>
+			then, the question option would be <code>question:'How are you today? {glyphicon-ok}'</code>.</p>
+			<br>
+			
+		</div>
+	</div>
 </div>
 </body>
