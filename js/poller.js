@@ -1,7 +1,7 @@
 /**
  * poller.js
  * @author Saud Khan - @s-khan-net
- * @description A very simple and light weight jqury plugin
+ * @description A simple, feature rich jqury plugin
  *   		 to create a poll on a web page.
  * 		Supports server side ajax calls to save and retieve poll data
  */
