@@ -221,7 +221,7 @@
             else if(options.saveMethod)
             {
             try{
-                    var b = options.saveMethod();
+                    var b = options.saveMethod(t);
                     if(b)
                     {
                         var r=null;

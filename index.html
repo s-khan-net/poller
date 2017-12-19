@@ -19,7 +19,7 @@
 				showResultsMethod:showresults,
 				showResultsBtn:true,
 				showBackBtn:true,
-				alertAfterSave:true,
+				alertAfterSave:false,
 				saveMethod:saveres,
 				resultGraph:true,
 			});
@@ -29,9 +29,9 @@
  		var r = [['40'],['17'],['74 {glyphicon-triangle-top}'],['56']];
  		return r;
  	}
- 	function saveres()
+ 	function saveres(res)
  	{
- 		var r=true
+ 		alert('Result : '+res);
  		return r;
  	}
  	function getOptions()
